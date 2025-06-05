@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+
+    stages {
+        stage('Clone') {
+            steps {
+                echo 'Code is already cloned by Jenkins when using Pipeline from SCM.'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'python3 python3 jenkins-ci-pipeline-project1/hello.py'
+            }
+        }
+    }
+
+
+
+
+
+}
