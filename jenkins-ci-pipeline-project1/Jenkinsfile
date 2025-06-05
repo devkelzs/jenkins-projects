@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Install Dependencies') {
+            steps {
+                sh 'pip3 install -r jenkins-ci-pipeline-project1/requirements.txt'
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'python3 jenkins-ci-pipeline-project1/hello.py'
