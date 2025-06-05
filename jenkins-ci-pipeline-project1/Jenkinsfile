@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'python3 python3 jenkins-ci-pipeline-project1/hello.py'
+                sh 'python3 jenkins-ci-pipeline-project1/hello.py'
             }
         }
     }
