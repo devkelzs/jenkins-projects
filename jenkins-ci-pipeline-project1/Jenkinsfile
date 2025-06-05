@@ -1,22 +1,26 @@
 pipeline {
     agent any
 
-
     stages {
-        stage('Clone') {
-            steps {
-                echo 'Code is already cloned by Jenkins when using Pipeline from SCM.'
-            }
-        }
         stage('Build') {
             steps {
                 sh 'python3 jenkins-ci-pipeline-project1/hello.py'
             }
         }
+
+        stage('Test') {
+            steps {
+                sh 'pytest jenkins-ci-pipeline-project1/test_hello.py'
+            }
+        }
     }
 
-
-
-
-
+    post {
+        success {
+            echo '✅ Job succeeded!'
+        }
+        failure {
+            echo '❌ Job failed.'
+        }
+    }
 }
