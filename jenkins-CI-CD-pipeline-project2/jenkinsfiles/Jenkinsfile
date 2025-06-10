@@ -20,7 +20,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                dir('jenkins-CI-CD-pipeline-project2/my-java-app') {
+                dir('jenkins-CI-CD-pipeline-project2/my-java-app/demo') {
                     sh 'mvn clean package'
                 }
             }
@@ -28,7 +28,7 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
-                dir('jenkins-CI-CD-pipeline-project2') {
+                dir('jenkins-CI-CD-pipeline-project2/my-java-app') {
                     withSonarQubeEnv('My SonarQube Server') {
                         sh 'mvn sonar:sonar'
                     }
