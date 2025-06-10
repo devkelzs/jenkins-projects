@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/your-username/my-static-website.git'
+                git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/devkelzs/jenkins-projects/edit/main/jenkins-ci-cd-project2.git'
             }
         }
         stage('Build') {
@@ -13,10 +13,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'sudo rm -rf /var/www/html/my-static-website/*'
-                sh 'sudo cp -r /tmp/website/* /var/www/html/my-static-website/'
-                sh 'sudo chown -R www-data:www-data /var/www/html/my-static-website'
-                sh 'sudo chmod -R 755 /var/www/html/my-static-website'
+                sh 'sudo rm -rf /var/www/html/my-static/*'
+                sh 'sudo cp -r /tmp/website/* /var/www/html/my-static/'
+                sh 'sudo chown -R www-data:www-data /var/www/html/my-static'
+                sh 'sudo chmod -R 755 /var/www/html/my-static'
             }
         }
     }
