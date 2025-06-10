@@ -4,13 +4,6 @@ This project sets up an automated deployment pipeline for a static HTML/CSS webs
 
 ---
 
-## 📸 Project Screenshot
-
-<!-- Add your image below -->
-![Project Screenshot](path-to-your-image.png)
-
----
-
 ## 🔍 Project Overview
 
 - **Purpose**: Automate deployment of a static website (e.g., personal portfolio or small business site) to an Nginx web server.
@@ -19,9 +12,6 @@ This project sets up an automated deployment pipeline for a static HTML/CSS webs
   - **GitHub** – Hosts website source code (`index.html`, `styles.css`, and `Jenkinsfile`)
   - **Nginx** – Web server to serve the deployed site
   - **Ubuntu 22.04** – Server OS (local or cloud, e.g., AWS EC2)
-
-> 💡 **Real-World Use Case**: Ideal for small teams or individual developers deploying updates automatically on code commits.
-
 ---
 
 ## 📁 Repository Structure
@@ -30,7 +20,6 @@ jenkins-ci-cd-project2/
 ├── index.html # Static HTML content
 ├── styles.css # Website styles
 └── Jenkinsfile # Jenkins pipeline definition
-
 
 ---
 
@@ -48,7 +37,6 @@ jenkins-ci-cd-project2/
 
 ### 1. Install Jenkins
 
-<details>
 <summary>Show Commands</summary>
 
 ```bash
@@ -67,7 +55,7 @@ Access Jenkins at http://<your-server-ip>:8080
 
 Retrieve admin password:
 
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```sudo cat /var/lib/jenkins/secrets/initialAdminPassword```
 Install Git Plugin and Pipeline Plugin via the plugin manager
 
 . Create Static Website
