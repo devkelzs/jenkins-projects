@@ -37,8 +37,6 @@ jenkins-ci-cd-project2/
 
 ### 1. Install Jenkins
 
-<summary>Show Commands</summary>
-
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install openjdk-11-jdk -y
@@ -63,30 +61,27 @@ Add index.html and styles.css to jenkins-ci-cd-project2/ in your repo
 
 Sample content included in the original README or use your own
 
-3. Install & Configure Nginx
-<details> <summary>Show Steps</summary>
+## 3. Install & Configure Nginx 
 Install Nginx:
 
-bash
-Copy
-Edit
-sudo apt install nginx -y
-sudo systemctl start nginx
-sudo systemctl enable nginx
+```sudo apt install nginx -y```
+
+```sudo systemctl start nginx```
+
+```sudo systemctl enable nginx```
+
 Create directory:
 
-bash
-Copy
-Edit
-sudo mkdir -p /var/www/html/my-static
-sudo chown -R www-data:www-data /var/www/html/my-static
-sudo chmod -R 755 /var/www/html/my-static
+```sudo mkdir -p /var/www/html/my-static```
+
+```sudo chown -R www-data:www-data /var/www/html/my-static```
+
+```sudo chmod -R 755 /var/www/html/my-static```
 Configure Nginx:
 
 nginx
-Copy
-Edit
-server {
+
+```server {
     listen 80;
     server_name _;
 
@@ -97,18 +92,18 @@ server {
         try_files $uri $uri/ /index.html;
     }
 }
+```
 Save it to /etc/nginx/sites-available/my-static and enable:
 
-bash
-Copy
-Edit
-sudo ln -s /etc/nginx/sites-available/my-static /etc/nginx/sites-enabled/
-sudo rm /etc/nginx/sites-enabled/default
-sudo nginx -t
-sudo systemctl restart nginx
-</details>
+```sudo ln -s /etc/nginx/sites-available/my-static /etc/nginx/sites-enabled/```
 
-4. Set Up Jenkins Pipeline
+```sudo rm /etc/nginx/sites-enabled/default```
+
+```sudo nginx -t```
+
+```sudo systemctl restart nginx```
+
+### 4. Set Up Jenkins Pipeline
 Add GitHub credentials in Jenkins (Username + PAT)
 
 Create a new pipeline job
@@ -118,16 +113,11 @@ jenkins-ci-cd-project2/Jenkinsfile
 
 Grant Jenkins sudo access for deployment commands:
 
-bash
-Copy
-Edit
-sudo visudo
+```sudo visudo```
 Add:
 
-perl
-Copy
-Edit
-jenkins ALL=(ALL) NOPASSWD: /bin/rm, /bin/cp, /bin/chown, /bin/chmod
+```jenkins ALL=(ALL) NOPASSWD: /bin/rm, /bin/cp, /bin/chown, /bin/chmod```
+
 5. Add GitHub Webhook
 GitHub > Repo Settings > Webhooks > Add Webhook:
 
