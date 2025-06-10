@@ -20,7 +20,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                dir('jenkins-CI-CD-pipeline-project2') {
+                dir('jenkins-CI-CD-pipeline-project2/java-app') {
                     sh 'mvn clean package'
                 }
             }
