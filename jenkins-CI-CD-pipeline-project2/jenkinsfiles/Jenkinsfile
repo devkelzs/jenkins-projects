@@ -7,14 +7,14 @@ pipeline {
     }
 
     environment {
-        SONARQUBE_URL = 'http://<sonarqube-node-ip>:9000'
-        DOCKER_IMAGE = 'your-dockerhub-username/java-app'
+        SONARQUBE_URL = 'http://34.227.87.230:9000'
+        DOCKER_IMAGE = 'https://hub.docker.com/repositories/kellynkwain/java-app'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/ci-cd-pipeline-project'
+                git 'https://github.com/devkelzs/jenkins-projects'
             }
         }
 
