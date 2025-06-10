@@ -118,7 +118,7 @@ Add:
 
 ```jenkins ALL=(ALL) NOPASSWD: /bin/rm, /bin/cp, /bin/chown, /bin/chmod```
 
-5. Add GitHub Webhook
+### 5. Add GitHub Webhook
 GitHub > Repo Settings > Webhooks > Add Webhook:
 
 URL: http://<server-ip>:8080/github-webhook/
@@ -129,7 +129,7 @@ Event: Just the push event
 
 Jenkins > Pipeline job > Enable GitHub hook trigger for GITScm polling
 
-6. Test the Setup
+### 6. Test the Setup
 Commit a change to index.html
 
 Check if Jenkins triggers and deploys the update
