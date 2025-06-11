@@ -1,9 +1,11 @@
-const http = require('http');
+const express = require('express');
+const app = express();
+const port = 3000;
 
-const server = http.createServer((req, res) => {
-  res.end('Hello from Node.js on Kubernetes!');
+app.get('/', (req, res) => {
+  res.send('Hello from Node.js on Kubernetes!');
 });
 
-server.listen(3000, '0.0.0.0', () => {
-  console.log('Server running at http://0.0.0.0:3000');
+app.listen(port, () => {
+  console.log(`App running on http://localhost:${port}`);
 });
