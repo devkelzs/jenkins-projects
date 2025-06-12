@@ -5,6 +5,10 @@ pipeline {
         DOCKER_IMAGE = 'kellynkwain/nodejs-k8s-app:latest'
     }
 
+    options {
+        skipDefaultCheckout() // Skip default SCM checkout to avoid conflicts
+    }
+
     triggers {
         githubPush()
     }
@@ -12,13 +16,14 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/devkelzs/jenkins-projects.git'
+                git branch: 'main', url: 'https://github.com/devkelzs/jenkins-projects.git'
+                sh 'ls -la jenkins-ci-cd-project3' // Debug: Verify directory contents
             }
         }
 
         stage('Build Image') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE .'
+                sh 'docker buildx build -t $DOCKER_IMAGE .' // Use buildx to avoid deprecation warning
             }
         }
 
@@ -36,12 +41,13 @@ pipeline {
         stage('Deploy to K8s') {
             steps {
                 dir('jenkins-ci-cd-project3') {
-                withCredentials([file(credentialsId: 'kubeconfig-minikube', variable: 'KUBECONFIG')]) {
-                    sh '''
-                        kubectl --kubeconfig=$KUBECONFIG delete deployment nodejs-deployment --ignore-not-found=true
-                        kubectl --kubeconfig=$KUBECONFIG apply -f deployment.yaml
-                    '''
-                }
+                    withCredentials([file(credentialsId: 'kubeconfig-minikube', variable: 'KUBECONFIG')]) {
+                        sh 'ls -la' // Debug: Confirm deployment.yaml is present
+                        sh '''
+                            kubectl --kubeconfig=$KUBECONFIG delete deployment nodejs-deployment --ignore-not-found=true
+                            kubectl --kubeconfig=$KUBECONFIG apply -f deployment.yaml
+                        '''
+                    }
                 }
             }
         }
