@@ -15,10 +15,17 @@ pipeline {
                 git 'https://github.com/devkelzs/jenkins-projects.git'
             }
         }
+        
+        stage('List files') {
+            steps {
+                sh 'ls -l'
+                sh 'ls -l jenkins-ci-cd-project3'
+            }
+        }
 
         stage('Build Image') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE .'
+                sh 'docker build -t $DOCKER_IMAGE jenkins-ci-cd-project3'
             }
         }
 
@@ -38,7 +45,7 @@ pipeline {
                 withCredentials([file(credentialsId: 'kubeconfig-minikube', variable: 'KUBECONFIG')]) {
                     sh '''
                         kubectl --kubeconfig=$KUBECONFIG delete deployment nodejs-deployment --ignore-not-found=true
-                        kubectl --kubeconfig=$KUBECONFIG apply -f deployment.yaml
+                        kubectl --kubeconfig=$KUBECONFIG apply -f jenkins-ci-cd-project3/deployment.yaml
                     '''
                 }
             }
