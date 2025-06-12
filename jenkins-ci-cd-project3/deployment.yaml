@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nodejs
-        image: kellynkwain/nodejs-k8s-app:latest
+        image: your-dockerhub-username/nodejs-k8s-app:latest
         ports:
         - containerPort: 3000
 ---
