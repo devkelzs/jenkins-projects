@@ -33,13 +33,18 @@ pipeline {
             }
         }
 
+        stage('Debug Workspace') {
+            steps {
+                sh 'ls -lR'
+            }
+        }
+
         stage('Deploy to K8s') {
             steps {
                 withCredentials([file(credentialsId: 'kubeconfig-minikube', variable: 'KUBECONFIG')]) {
                     sh '''
                         kubectl --kubeconfig=$KUBECONFIG delete deployment nodejs-deployment --ignore-not-found=true
                         kubectl --kubeconfig=$KUBECONFIG apply -f deployment.yaml
-
                     '''
                 }
             }
