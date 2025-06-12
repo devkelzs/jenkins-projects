@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'your-dockerhub-username/nodejs-k8s-app:latest'
+        DOCKER_IMAGE = 'kellynkwain/nodejs-k8s-app:latest'
     }
 
     triggers {
