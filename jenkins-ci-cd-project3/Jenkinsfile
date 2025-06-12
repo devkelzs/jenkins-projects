@@ -12,25 +12,13 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/devkelzs/jenkins-projects.git'
-            }
-        }
-
-        stage('Debug Workspace') {
-            steps {
-                sh '''
-                    echo "Current directory:"
-                    pwd
-                    echo "Listing workspace recursively:"
-                    ls -lR
-                '''
+                git 'https://github.com/devkelzs/jenkins-projects.git'
             }
         }
 
         stage('Build Image') {
             steps {
-                // Change ./nodejs-k8s-app to your actual subfolder path if needed
-                sh 'docker build -t $DOCKER_IMAGE ./nodejs-k8s-app'
+                sh 'docker build -t $DOCKER_IMAGE .'
             }
         }
 
@@ -50,7 +38,7 @@ pipeline {
                 withCredentials([file(credentialsId: 'kubeconfig-minikube', variable: 'KUBECONFIG')]) {
                     sh '''
                         kubectl --kubeconfig=$KUBECONFIG delete deployment nodejs-deployment --ignore-not-found=true
-                        kubectl --kubeconfig=$KUBECONFIG apply -f ./nodejs-k8s-app/deployment.yaml
+                        kubectl --kubeconfig=$KUBECONFIG apply -f deployment.yaml
                     '''
                 }
             }
