@@ -38,7 +38,7 @@ pipeline {
                 withCredentials([file(credentialsId: 'kubeconfig-minikube', variable: 'KUBECONFIG')]) {
                     sh '''
                         kubectl --kubeconfig=$KUBECONFIG delete deployment nodejs-deployment --ignore-not-found=true
-                        kubectl --kubeconfig=$KUBECONFIG apply -f jenkins-ci-cd-project3/deployment.yaml
+                        kubectl --kubeconfig=$KUBECONFIG apply -f deployment.yaml
 
                     '''
                 }
