@@ -1,8 +1,8 @@
-Here’s a clean, professional `README.md` tailored for your **Node.js + Jenkins + Docker + Kubernetes (Minikube) CI/CD pipeline** project:
+# **Node.js + Jenkins + Docker + Kubernetes (Minikube) CI/CD pipeline** project:
 
 ---
 
-```markdown
+
 # 🚀 Node.js CI/CD Pipeline with Jenkins, Docker, and Kubernetes on EC2
 
 This project demonstrates a full CI/CD pipeline that automates the build, test, and deployment of a simple Node.js web app to a Kubernetes cluster (Minikube), using Jenkins running on an AWS EC2 instance.
@@ -58,11 +58,9 @@ Available at:
 
 ---
 
-## 🚀 Getting Started
-
 ### 1. Launch EC2 Instance
 
-* Ubuntu 22.04, t2.medium
+* Ubuntu 22.04, t2.large
 * Open ports: `22`, `80`, `443`, `8080`, `30000–32767`
 
 ### 2. Install Software on EC2
@@ -111,49 +109,6 @@ Jenkins → Manage Jenkins → Credentials → Global → Add
 
 ---
 
-## 📂 Jenkinsfile Overview
-
-```groovy
-pipeline {
-  agent any
-  environment {
-    DOCKER_IMAGE = 'kellynkwain/nodejs-k8s-app:latest'
-    DOCKER_CREDENTIALS_ID = 'docker-hub-credentials'
-  }
-  triggers {
-    githubPush()
-  }
-  stages {
-    stage('Clone Repo') {
-      steps {
-        git 'https://github.com/kellynkwain/nodejs-k8s-app.git'
-      }
-    }
-    stage('Build Docker Image') {
-      steps {
-        script {
-          docker.build("${DOCKER_IMAGE}")
-        }
-      }
-    }
-    stage('Push to Docker Hub') {
-      steps {
-        withDockerRegistry(credentialsId: "${DOCKER_CREDENTIALS_ID}", url: '') {
-          docker.image("${DOCKER_IMAGE}").push()
-        }
-      }
-    }
-    stage('Deploy to Kubernetes') {
-      steps {
-        sh 'kubectl apply -f deployment.yaml'
-      }
-    }
-  }
-}
-```
-
----
-
 ## 🔁 GitHub Webhook Setup
 
 1. Go to your repo → **Settings → Webhooks**
@@ -191,8 +146,7 @@ kubectl delete svc nodejs-service
 ---
 
 ## 🧑‍💻 Author
-
-**[@kellynkwain](https://github.com/kellynkwain)**
+**devkelzs**
 Open for contributions, PRs, or forks!
 
 ---
@@ -201,14 +155,4 @@ Open for contributions, PRs, or forks!
 
 MIT – Free to use and modify.
 
-```
-
----
-
-Let me know if you'd like:
-- A badge section at the top (build passing, license, etc.)
-- Deployment instructions in script form
-- Screenshots or architecture diagram added
-
-Want me to commit this directly to your repo with a PR message?
 ```
