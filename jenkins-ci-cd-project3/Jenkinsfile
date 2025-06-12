@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/devkelzs/jenkins-projects.git'
+                git branch: 'main', url: 'https://github.com/devkelzs/jenkins-projects.git'
             }
         }
 
@@ -30,12 +30,6 @@ pipeline {
                         docker push $DOCKER_IMAGE
                     '''
                 }
-            }
-        }
-
-        stage('Debug Workspace') {
-            steps {
-                sh 'ls -lR'
             }
         }
 
