@@ -1,8 +1,3 @@
-Here's a complete `README.md` for your Node.js CI/CD project using Jenkins, GitHub, Mocha, and PM2:
-
----
-
-```markdown
 # Node.js CI/CD Pipeline with Jenkins
 
 This project demonstrates a simple Continuous Integration and Continuous Deployment (CI/CD) pipeline for a Node.js application using **Jenkins**, **GitHub**, **npm**, **Mocha**, and **PM2**.
@@ -33,8 +28,6 @@ node-ci-app/
 └── README.md
 
 ````
-
----
 
 ## 🔧 Installation
 
@@ -87,42 +80,6 @@ Sample test output:
 3. **Test**: Run unit tests using Mocha.
 4. **Deploy**: Use PM2 to restart the app.
 
-### Example Jenkinsfile
-
-```groovy
-pipeline {
-    agent any
-
-    tools {
-        nodejs "NodeJS 18"
-    }
-
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/your-username/node-ci-app.git'
-            }
-        }
-        stage('Install') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'npm test'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'pm2 delete server || true'
-                sh 'pm2 start server.js --name node-ci-app'
-            }
-        }
-    }
-}
-```
-
 > ⚠️ Make sure PM2 is installed on the Jenkins host:
 
 ```bash
@@ -146,7 +103,6 @@ Make sure Jenkins is publicly accessible or use a tunneling tool like `ngrok` or
 
 ## 🌐 Deployment
 
-The app runs on **localhost:3000** by default.
 
 To start manually with PM2:
 
@@ -172,10 +128,6 @@ Ideal for:
 
 ---
 
-## 📃 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ---
 
 ## 🙌 Contributions
@@ -186,11 +138,6 @@ Feel free to fork, improve and create a pull request! Open issues for bugs or fe
 
 ## 👨‍💻 Author
 
-Created by [Your Name](https://github.com/your-username)
+Created by **Devkelzs**
 
-```
-
----
-
-Let me know if you'd like to include a badge section (for build status, license, etc.) or deploy this project using Docker or Kubernetes.
 ```
