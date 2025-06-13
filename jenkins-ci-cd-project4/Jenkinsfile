@@ -13,18 +13,24 @@ pipeline {
         }
         stage('Install') {
             steps {
-                sh 'npm install'
+                dir('jenkins-ci-cd-project4') {
+                    sh 'npm install'
+                }
             }
         }
         stage('Test') {
             steps {
-                sh 'npm test'
+                dir('jenkins-ci-cd-project4') {
+                    sh 'npm test'
+                }
             }
         }
         stage('Deploy') {
             steps {
-                sh 'pm2 delete server || true'
-                sh 'pm2 start server.js --name node-ci-app'
+                dir('jenkins-ci-cd-project4') {
+                    sh 'pm2 delete server || true'
+                    sh 'pm2 start server.js --name node-ci-app'
+                }
             }
         }
     }
