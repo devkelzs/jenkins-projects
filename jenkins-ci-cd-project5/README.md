@@ -1,6 +1,3 @@
-Sure! Here’s a professional, clear, and detailed **README.md** for your project:
-
-```markdown
 # Jenkins CI/CD Pipeline for Python Flask App on Kubernetes
 
 This project demonstrates a full CI/CD pipeline to build, test, containerize, and deploy a Python Flask application to a Kubernetes cluster using Jenkins.
@@ -67,7 +64,7 @@ jenkins-ci-cd-project5/
 - Set Git repository URL: `https://github.com/YOUR_USERNAME/jenkins-ci-cd-project5.git`
 - Set branch to build: `main`
 - Set Script Path: `jenkins-ci-cd-project5/Jenkinsfile`
-- Add Docker Hub credentials in Jenkins (ID: `docker-hub-creds`).
+- Add Docker Hub credentials in Jenkins (ID: `dockerhub-creds`).
 
 ### 2. Run the Pipeline
 
@@ -82,7 +79,7 @@ jenkins-ci-cd-project5/
   kubectl port-forward svc/flask-service 5000:5000
 ````
 
-* Open in browser: [http://localhost:5000](http://localhost:5000)
+* Open in browser: [http://localhost:5000](http://localhost:5000) or curl http://localhost:5000 *
 
 ---
 
@@ -115,11 +112,6 @@ This project is open-source and available under the MIT License.
 
 ## Author
 
-kellynkwain
+** devkelzs ** 
 
-```
-
----
-
-If you want, I can also generate a `.gitignore` or help set up automated webhooks next!
 ```
