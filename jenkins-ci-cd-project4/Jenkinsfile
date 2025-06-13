@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs "NodeJS 18"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/your-username/node-ci-app.git'
+            }
+        }
+        stage('Install') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'pm2 delete server || true'
+                sh 'pm2 start server.js --name node-ci-app'
+            }
+        }
+    }
+}
