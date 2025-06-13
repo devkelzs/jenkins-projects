@@ -15,12 +15,9 @@ pipeline {
         stage('Test') {
             steps {
                 dir('jenkins-ci-cd-project5') {
-                    sh '''
-                        python3 -m venv venv
-                        . venv/bin/activate
-                        pip install -r requirements.txt
-                        pytest tests/
-                    '''
+                    echo "Building test image and running tests inside Docker"
+                    sh 'docker build -t flaskapp-test -f Dockerfile .'
+                    sh 'docker run --rm flaskapp-test'
                 }
             }
         }
