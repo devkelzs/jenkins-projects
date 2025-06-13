@@ -77,7 +77,7 @@ jenkins-ci-cd-project5/
 
   ```bash
   kubectl port-forward svc/flask-service 5000:5000
-````
+  ````
 
 * Open in browser: [http://localhost:5000](http://localhost:5000) or curl http://localhost:5000 *
 
@@ -114,4 +114,3 @@ This project is open-source and available under the MIT License.
 
 ** devkelzs ** 
 
-```
