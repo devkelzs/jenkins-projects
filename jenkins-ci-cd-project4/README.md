@@ -50,7 +50,7 @@ npm install
 node server.js
 ```
 
-Open your browser at `http://localhost:3000`.
+Open your browser at `(http://<EC2-IP>:3000/)`.
 
 ---
 
