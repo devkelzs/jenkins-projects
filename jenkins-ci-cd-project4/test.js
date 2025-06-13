@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../app'); // adjust path if needed
+const app = require('./app');  // relative path to app.js
 const assert = require('assert');
 
 describe('GET /', () => {
