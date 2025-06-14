@@ -1,8 +1,3 @@
-Here’s a **complete and professional `README.md`** for your Java Spring Boot + Maven + Jenkins CI/CD project, focused on **WAR packaging** and deployment readiness:
-
----
-
-```markdown
 # Spring Boot Maven CI/CD with Jenkins (WAR Packaging)
 
 This project demonstrates how to build and package a Spring Boot web application as a `.war` file using Maven and automate the CI/CD process with Jenkins.
@@ -87,48 +82,6 @@ target/demo-0.0.1-SNAPSHOT.war
 
 ---
 
-## 🧪 Jenkinsfile (Pipeline Script)
-
-```groovy
-pipeline {
-    agent any
-
-    tools {
-        jdk 'jdk-17'
-        maven 'maven'
-    }
-
-    stages {
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/YOUR_USERNAME/YOUR_REPO.git', branch: 'main'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'mvn clean package'
-            }
-        }
-
-        stage('Archive Artifact') {
-            steps {
-                archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
-            }
-        }
-    }
-
-    post {
-        success {
-            echo '✅ WAR built and archived successfully!'
-        }
-        failure {
-            echo '❌ Build failed!'
-        }
-    }
-}
-```
-
 ---
 
 ## 🔔 GitHub Webhook Setup (Optional)
@@ -160,8 +113,7 @@ MIT License
 
 ## 🙋‍♂️ Author
 
-* **Your Name**
-* [GitHub](https://github.com/YOUR_USERNAME)
+* **devkelzs**
 
 ```
 
