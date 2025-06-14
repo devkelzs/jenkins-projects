@@ -15,13 +15,15 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                dir('demo') {     // 👈 navigate into the folder with pom.xml
+                    sh 'mvn clean package'
+                }
             }
         }
 
         stage('Archive') {
             steps {
-                archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+                archiveArtifacts artifacts: 'demo/target/*.war', fingerprint: true
             }
         }
     }
