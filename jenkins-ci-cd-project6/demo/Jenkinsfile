@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                dir('demo') {     // 👈 navigate into the folder with pom.xml
+                dir('jenkins-ci-cd-project6/demo') {     // 👈 navigate into the folder with pom.xml
                     sh 'mvn clean package'
                 }
             }
