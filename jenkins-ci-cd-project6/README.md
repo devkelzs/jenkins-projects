@@ -118,9 +118,3 @@ MIT License
 ```
 
 ---
-
-Let me know if you’d like me to:
-- Add deployment steps (e.g., copy `.war` to Tomcat)
-- Convert this into a Dockerized build
-- Extend the pipeline with test or staging environments
-```
